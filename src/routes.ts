@@ -1,8 +1,17 @@
 import { Router } from "express";
-const paymentController = require("./app/controllers/PaymentController");
+
+import CustomerController from "./app/controllers/CustomerController";
+import FinanceController from "./app/controllers/FinanceController";
+import PaymentController from "./app/controllers/PaymentController";
 
 const router = Router();
 
-router.get("/", paymentController.index);
+router.get("/customers", CustomerController.findAll);
+router.post("/customers", CustomerController.create);
 
-module.exports = router;
+router.get("/finance/balance", FinanceController.findBalance);
+
+router.get("/payments", PaymentController.findAll);
+router.post("/payments", PaymentController.create);
+
+export default router;
