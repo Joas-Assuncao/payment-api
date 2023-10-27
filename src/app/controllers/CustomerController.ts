@@ -19,6 +19,21 @@ class CustomerController {
     }
   }
 
+  async findById(req: Request, res: Response) {
+    try {
+      const response: AxiosResponse<ICustomerData> = await apiService({
+        method: "GET",
+        url: `/customers/${req.params.id}`,
+      });
+
+      res.status(200).json(response.data);
+    } catch (err) {
+      console.log(err);
+      // 500 pois é um erro em outra api(servidor)
+      res.status(500).json(err);
+    }
+  }
+
   async create(req: Request, res: Response) {
     try {
       const response: AxiosResponse<ICustomer> = await apiService({
