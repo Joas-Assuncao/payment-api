@@ -12,7 +12,7 @@ class FinanceController {
       });
 
       res.status(200).json(response.data);
-    } catch (err) {
+    } catch (err: any) {
       // 500 pois é um erro em outra api(servidor)
       res.status(500).json(err);
     }

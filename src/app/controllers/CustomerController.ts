@@ -31,7 +31,7 @@ class CustomerController {
     } catch (err: any) {
       console.log(err.response.data);
       // 500 pois é um erro em outra api(servidor)
-      res.json(err);
+      res.status(500).json(err);
     }
   }
 }
